@@ -24,7 +24,7 @@ class ShipmentInfo(BaseModel):
 
 class OrderOut(BaseModel):
     id: int
-    total: float
+    total: Optional[float] = None
     status: str
     created_at: datetime
     shipment: Optional[ShipmentInfo] = None

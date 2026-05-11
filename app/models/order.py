@@ -8,9 +8,8 @@ class Order(Base):
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey("users.id"))
     total = Column(Float)
-    status = Column(String, default="pending")  # pending, paid, shipped, delivered, cancelled
+    status = Column(String(50), default="pending")
     created_at = Column(DateTime, default=datetime.utcnow)
-
     user = relationship("User", back_populates="orders")
     items = relationship("OrderItem", back_populates="order")
     shipment = relationship("Shipment", back_populates="order", uselist=False)
